@@ -254,7 +254,18 @@ function get_label($field_name,$post_id=NULL){
  */
 function create_image($options){
   global $post,$mf_domain;
-	
+
+  //correct init
+    $field_name = '';
+    $group_index = 1;
+    $field_index = 1;
+    $param = NULL;
+    $attr = NULL;
+    $post_id = NULL;
+    $tag_img = true;
+    $wp_size = 'original';
+
+
   // establish the default values, then override them with 
   // whatever the user has passed in
   $options = array_merge(
@@ -456,7 +467,7 @@ function _processed_value($value, $type, $options = array(), $image_array = 0 ){
     $options= unserialize( $options );
   }
 
-  $result = '';
+  $result = array();
   switch($type){
     case 'audio':
     case 'file':
